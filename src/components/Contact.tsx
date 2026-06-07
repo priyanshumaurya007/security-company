@@ -22,10 +22,28 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate async send
-    await new Promise((r) => setTimeout(r, 1400));
-    setLoading(false);
-    setSubmitted(true);
+    
+    try {
+      const formData = new FormData();
+      formData.append('name', form.name);
+      formData.append('phone', form.phone);
+      formData.append('email', form.email);
+      formData.append('service', form.service);
+      formData.append('message', form.message);
+
+      await fetch('https://script.google.com/macros/s/AKfycbxe42xzK6N7kM9eSxH4lsdOfwHTatqGoOYcZffTx4WuEaxAsuIlD48SEzHV4toEawTm/exec', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' // Google Scripts requires no-cors from frontend
+      });
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Something went wrong. Please try again or contact us directly on WhatsApp.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const info = [
