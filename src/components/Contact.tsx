@@ -45,7 +45,7 @@ export default function Contact() {
       icon: MapPin,
       label: 'Address',
       value: 'Sundram Garden, Agra Expressway Ring Road, Near Kisan Path, Bada Gaon, Lucknow, UP',
-      href: 'https://www.google.com/maps/search/Bada+Gaon+Lucknow+Uttar+Pradesh',
+      href: 'https://www.google.com/maps?cid=2419467853002501773&hl=en&gl=IN',
     },
     {
       icon: Mail,
@@ -136,7 +136,7 @@ export default function Contact() {
             <div className="rounded-2xl overflow-hidden border border-[#D4AF37]/20 h-52 mt-2">
               <iframe
                 title="Garud Corporate Solutions Location – Lucknow"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.862!2d80.9462!3d26.7606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd991f32b16b%3A0x93ccba8909978be7!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?cid=2419467853002501773&hl=en&gl=IN&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) saturate(0.4)' }}

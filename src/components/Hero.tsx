@@ -30,7 +30,7 @@ export default function Hero() {
       {/* ── Parallax Background ── */}
       <motion.div className="absolute inset-0 z-0" style={{ y }}>
         <Image
-          src="/hero-bg.png"
+          src="/hero-bg-v2.png"
           alt="Premium security background – Garud Corporate Solutions"
           fill
           priority

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
       "Your Trust, Our Responsibility. Professional Security & Facility Management Solutions for a Safer Future. Based in Lucknow, serving across Uttar Pradesh.",
     images: [
       {
-        url: "/hero-bg.png",
+        url: "/hero-bg-v2.png",
         width: 1200,
         height: 630,
         alt: "Garud Corporate Solutions – Premium Security Services",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Garud Corporate Solutions | Security Services in Lucknow",
     description:
       "Professional Security & Facility Management Solutions. 24/7 Support. Verified Staff. Lucknow, UP.",
-    images: ["/hero-bg.png"],
+    images: ["/hero-bg-v2.png"],
   },
   robots: {
     index: true,
