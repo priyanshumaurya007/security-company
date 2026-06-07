@@ -61,7 +61,7 @@ export default function Hero() {
       {/* ── Content ── */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 lg:pt-0"
       >
         {/* Trust badge */}
         <motion.div
@@ -93,8 +93,7 @@ export default function Hero() {
           className="text-lg sm:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-light"
         >
           Professional Security &amp; Facility Management Solutions
-          <br className="hidden sm:block" />
-          For A <span className="text-[#D4AF37] font-semibold">Safer Future</span>
+          {' '}For A <span className="text-[#D4AF37] font-semibold">Safer Future</span>
         </motion.p>
 
         {/* CTA Buttons */}
