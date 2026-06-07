@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
+/* ── Brand Tokens ─────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gold:        #D4AF37;
+  --gold-light:  #F0D060;
+  --gold-dark:   #A88B20;
+  --black:       #000000;
+  --bg-primary:  #080808;
+  --bg-secondary:#0f0f0f;
+  --bg-card:     #111111;
+  --border:      rgba(212, 175, 55, 0.18);
+  --text-muted:  #9ca3af;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-gold:       var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark:  var(--gold-dark);
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card:    var(--bg-card);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+/* ── Gold Gradient Text ───────────────────────────────────── */
+.gold-text {
+  background: linear-gradient(135deg, #F0D060 0%, #D4AF37 50%, #A88B20 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Gold Shimmer Animate ─────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.gold-shimmer {
+  background: linear-gradient(90deg,
+    #A88B20 0%, #D4AF37 30%, #F0D060 50%, #D4AF37 70%, #A88B20 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ── Glow ─────────────────────────────────────────────────── */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(212,175,55,0.35), 0 0 60px rgba(212,175,55,0.12);
+}
+
+/* ── Btn Primary ──────────────────────────────────────────── */
+.btn-gold {
+  background: linear-gradient(135deg, #D4AF37, #A88B20);
+  color: #000;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: left 0.5s ease;
+}
+.btn-gold:hover::before { left: 100%; }
+.btn-gold:hover {
+  box-shadow: 0 8px 30px rgba(212,175,55,0.5);
+  transform: translateY(-2px);
+}
+
+/* ── Btn Outline ──────────────────────────────────────────── */
+.btn-outline-gold {
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+.btn-outline-gold:hover {
+  background: var(--gold);
+  color: #000;
+  box-shadow: 0 8px 30px rgba(212,175,55,0.4);
+  transform: translateY(-2px);
+}
+
+/* ── Section Divider ──────────────────────────────────────── */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #D4AF37, #A88B20);
+  border-radius: 2px;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.card-glass {
+  background: rgba(17,17,17,0.85);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: all 0.35s ease;
+}
+.card-glass:hover {
+  border-color: rgba(212,175,55,0.5);
+  box-shadow: 0 0 30px rgba(212,175,55,0.12);
+  transform: translateY(-4px);
+}
+
+/* ── Noise overlay ────────────────────────────────────────── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Floating Pulse ───────────────────────────────────────── */
+@keyframes float-pulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.05); }
+}
+.float-pulse { animation: float-pulse 2.5s ease-in-out infinite; }
+
+/* ── Counter ──────────────────────────────────────────────── */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Fade-in up ───────────────────────────────────────────── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease forwards;
+}
+
+/* ── Loader ───────────────────────────────────────────────── */
+@keyframes loader-scale {
+  0%, 100% { transform: scale(0.8); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 1; }
 }
